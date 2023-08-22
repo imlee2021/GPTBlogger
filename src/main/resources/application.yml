@@ -1,0 +1,44 @@
+spring:
+    datasource:
+        url: jdbc:sqlite:db/data.db
+        type: com.alibaba.druid.pool.DruidDataSource
+        druid:
+            driver-class-name: org.sqlite.JDBC
+
+mybatis-plus:
+    global-config:
+        db-config:
+            id-type: auto
+#    configuration:
+#        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+gptblogger:
+    url: https://www.iocandaop.com/api/blog_admin_api/blog/add
+    api_key: b0qC9AzElV9OUhl5KDBlD9bpHp92x5UR
+    prompt: |
+        Now you are a blogger, please write a long blog.
+        If blog topic is problem: Intro, Problem, Solution, Conclusion.
+        If blog topic is encyclopedia/news: Abstract, Content, Conclusion.
+        If blog topic is tutorial: Intro, Steps, Conclusion.
+        For other topics: Intro, Content, Conclusion.
+        The blog should not contain picture or other external link.
+        You should use HTML to write the blog in Chinese.
+        You should use the following xml format to respond: 
+        <?xml version="1.0" encoding="utf-8"?>
+        <blog>
+            <categoryId>integer, 1. 编程 2. 开发 3. AI 4. 科技 5. 数码 6. 代码 7. 人工智能 8. 服务器 9. 运维 10. 工具 11. 实用 12. 百科 13. Web 14. 机器学习 15. 算法 16. Linux 17. Windows 18. 深度学习 19. 嵌入式 20. 单片机 21. 电子信息 22. 电子工艺 23. 安全漏洞 24. 数据库</categoryId>
+            <title><![CDATA[string]]></title>
+            <tag><![CDATA[string]]>, half corner comma separated.</tag>
+            <summary><![CDATA[string]]></summary>
+            <content><![CDATA[string]]></content>
+            <seoKeywords><![CDATA[string]]></seoKeywords>
+            <seoDescription><![CDATA[string]]></seoDescription>
+        </blog>
+        The title of the blog is:
+    connect_timeout: 30
+    read_timeout: 600
+    write_timeout: 600
+    api_host: https://ai.imlee.top/
+    http:
+        logging:
+            level: NONE # NONE,BASIC,HEADERS
